@@ -9,7 +9,7 @@ const nameId = 100123;
      console.log("Fetching data");
      //setFetching(true);
      let data;
-     let url = REACT_APP_API_ROOT + 'name?nameid=' + nameId;
+     let url = process.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId;
      console.log(url);
      const response = await(fetch(process.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId));
      if(!response.ok) {
