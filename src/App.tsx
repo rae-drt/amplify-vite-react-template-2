@@ -22,6 +22,7 @@ const nameId = 100123;
 
 function App() {
   const { signOut } = useAuthenticator();
+  console.log('REACT_APP_TEST_VARIABLE', process.env.REACT_APP_TEST_VARIABLE);
   fetchData();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
