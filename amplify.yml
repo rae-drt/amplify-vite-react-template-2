@@ -9,7 +9,7 @@ frontend:
   phases:
     build:
       commands:
-        - echo "REACT_APP_TEST_VARIABLE=$REACT_APP_TEST_VARIABLE" >> .env
+        - echo "REACT_APP_TEST_VARIABLE=${REACT_APP_TEST_VARIABLE}" >> .env
         - echo "REACT_APP_API_ROOT=$REACT_APP_API_ROOT" >> .env
         - npm run build
   artifacts:
