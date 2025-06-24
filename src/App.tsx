@@ -4,9 +4,25 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
 const client = generateClient<Schema>();
+const nameId = 100123;
+  const fetchData = async() => {
+     console.log("Fetching data");
+     //setFetching(true);
+     let data;
+     let url = REACT_APP_API_ROOT + 'name?nameid=' + nameId;
+     console.log(url);
+     const response = await(fetch(process.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId));
+     if(!response.ok) {
+       throw new Error('Bad response: ' + response.status);
+      }
+      data = await(response.json());
+     console.log(data);
+     //setFetching(false);
+   }
 
 function App() {
   const { signOut } = useAuthenticator();
+  fetchData();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   useEffect(() => {
