@@ -13,7 +13,7 @@ const nameId = 100123;
      let data;
      let url = import.meta.env.VITE_APP_API_ROOT + 'name?nameid=' + nameId;
      console.log(url);
-     const response = await(fetch(url + 'name?nameid=' + nameId));
+     const response = await(fetch(url));
      if(!response.ok) {
        throw new Error('Bad response: ' + response.status);
       }
