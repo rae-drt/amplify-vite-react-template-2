@@ -32,7 +32,7 @@ const nameId = 100123;
      const response = await(fetch(url, { 
     method: 'get', 
     headers: new Headers({
-        'Authorization': token
+        'Authorization': String(token)
     })
 }));
      if(!response.ok) {
