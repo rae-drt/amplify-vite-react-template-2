@@ -25,7 +25,7 @@ const nameId = 100123;
     console.log(import.meta.env.VITE_VARIABLE);
     //console.log(process.env);
      //setFetching(true);
-    let token = printAccessTokenAndIdToken();
+    let token = await(printAccessTokenAndIdToken());
     console.log("TOKEN", String(token));
      let data;
      let url = import.meta.env.VITE_APP_API_ROOT + 'name?nameid=' + nameId;
