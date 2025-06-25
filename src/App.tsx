@@ -2,7 +2,7 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
-import dotenv;
+require('dotenv').config();
 
 const client = generateClient<Schema>();
 const nameId = 100123;
