@@ -9,7 +9,7 @@ frontend:
   phases:
     build:
       commands:
-        - echo "************* Setting variables: ${REACT_APP_TEST_VARIABLE} ******"
+        - echo "************* Setting variables ${REACT_APP_TEST_VARIABLE} ******"
         - echo "REACT_APP_TEST_VARIABLE=MyVariable" >> .env
         - echo "REACT_APP_API_ROOT=${REACT_APP_API_ROOT}" >> .env
         - npm run build
