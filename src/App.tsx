@@ -10,6 +10,8 @@ import { generateClient } from "aws-amplify/data";
       const session = await fetchAuthSession();   // Fetch the authentication session
       console.log('Session:', session); //.tokens.accessToken.toString());
       console.log('Tokens:', session.tokens); //.accessToken.toString());
+      console.log('accessToken:', session.tokens.accessToken); //.toString());
+      console.log('payload:', session.tokens.accessToken.payload); //.toString());
       // console.log('ID Token:', session.tokens.idToken.toString());
     }
     catch (e) { console.log(e); }
