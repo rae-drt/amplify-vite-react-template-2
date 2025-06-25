@@ -11,8 +11,8 @@ frontend:
       commands:
         - echo "************* Setting variables ${REACT_APP_TEST_VARIABLE} ******"
         - echo "VITE_VARIABLE=MyViteVariable" >> .env
-        - echo "REACT_APP_TEST_VARIABLE=MyVariable" >> .env
-        - echo "REACT_APP_API_ROOT=${REACT_APP_API_ROOT}" >> .env
+        - echo "VITE_APP_TEST_VARIABLE=MyVariable" >> .env
+        - echo "VITE_APP_API_ROOT=${VITE_APP_API_ROOT}" >> .env
         - npm run build
   artifacts:
     baseDirectory: dist
