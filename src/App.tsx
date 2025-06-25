@@ -13,6 +13,7 @@ import { generateClient } from "aws-amplify/data";
       console.log('accessToken:', session.tokens?.accessToken); //.toString());
       console.log('token:', session.tokens?.accessToken?.toString()); //.toString());
       // console.log('ID Token:', session.tokens.idToken.toString());
+      return (session.tokens?.accessToken?.toString());
     }
     catch (e) { console.log(e); }
   };
@@ -24,10 +25,16 @@ const nameId = 100123;
     console.log(import.meta.env.VITE_VARIABLE);
     //console.log(process.env);
      //setFetching(true);
+    let token = printAccessTokenAndIdToken();
      let data;
      let url = import.meta.env.VITE_APP_API_ROOT + 'name?nameid=' + nameId;
      console.log(url);
-     const response = await(fetch(url));
+     const response = await(fetch(url, { 
+    method: 'get', 
+    headers: new Headers({
+        'Authorization': token
+    })
+}));
      if(!response.ok) {
        throw new Error('Bad response: ' + response.status);
       }
@@ -38,7 +45,7 @@ const nameId = 100123;
 
 function App() {
   const { signOut } = useAuthenticator();
-  printAccessTokenAndIdToken();
+  
   fetchData();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
