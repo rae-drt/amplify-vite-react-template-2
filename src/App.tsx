@@ -1,7 +1,18 @@
+import { fetchAuthSession } from '@aws-amplify/auth';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+
+// Function to print access token and id token
+  const printAccessTokenAndIdToken = async () => {
+    try {
+      const session = await fetchAuthSession();   // Fetch the authentication session
+      console.log('Access Token:', session.tokens.accessToken.toString());
+      console.log('ID Token:', session.tokens.idToken.toString());
+    }
+    catch (e) { console.log(e); }
+  };
 
 const client = generateClient<Schema>();
 const nameId = 100123;
@@ -24,6 +35,7 @@ const nameId = 100123;
 
 function App() {
   const { signOut } = useAuthenticator();
+  printAccessTokenAndIdToken();
   fetchData();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
