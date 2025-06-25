@@ -7,6 +7,7 @@ const client = generateClient<Schema>();
 const nameId = 100123;
   const fetchData = async() => {
      console.log("Fetching data");
+    console.log(import.meta.env.VITE_VARIABLE);
     //console.log(process.env);
      //setFetching(true);
      let data;
