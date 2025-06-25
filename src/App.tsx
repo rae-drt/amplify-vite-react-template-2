@@ -7,10 +7,10 @@ const client = generateClient<Schema>();
 const nameId = 100123;
   const fetchData = async() => {
      console.log("Fetching data");
-    console.log(process.env);
+    //console.log(process.env);
      //setFetching(true);
      let data;
-     let url = process.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId;
+     let url = import.meta.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId;
      console.log(url);
      const response = await(fetch(process.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId));
      if(!response.ok) {
