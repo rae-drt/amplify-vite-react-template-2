@@ -2,11 +2,13 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import dotenv;
 
 const client = generateClient<Schema>();
 const nameId = 100123;
   const fetchData = async() => {
      console.log("Fetching data");
+    console.log(process.env);
      //setFetching(true);
      let data;
      let url = process.env.REACT_APP_API_ROOT + 'name?nameid=' + nameId;
