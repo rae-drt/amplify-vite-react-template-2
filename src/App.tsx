@@ -8,8 +8,8 @@ import { generateClient } from "aws-amplify/data";
   const printAccessTokenAndIdToken = async () => {
     try {
       const session = await fetchAuthSession();   // Fetch the authentication session
-      console.log('Access Token:', session.tokens.accessToken.toString());
-      console.log('ID Token:', session.tokens.idToken.toString());
+      console.log('Access Token:', session); //.tokens.accessToken.toString());
+      // console.log('ID Token:', session.tokens.idToken.toString());
     }
     catch (e) { console.log(e); }
   };
