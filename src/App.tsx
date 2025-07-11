@@ -1,10 +1,11 @@
-import { fetchAuthSession } from '@aws-amplify/auth';
+//import { fetchAuthSession } from '@aws-amplify/auth';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
 // Function to print access token and id token
+/*
   const printAccessTokenAndIdToken = async () => {
     try {
       const session = await fetchAuthSession();   // Fetch the authentication session
@@ -18,6 +19,7 @@ import { generateClient } from "aws-amplify/data";
     }
     catch (e) { console.log(e); }
   };
+  */
 
 const client = generateClient<Schema>();
 //const nameId = 100123;
@@ -26,8 +28,8 @@ const client = generateClient<Schema>();
     console.log(import.meta.env.VITE_VARIABLE);
     //console.log(process.env);
      //setFetching(true);
-    let token = await(printAccessTokenAndIdToken());
-    console.log("TOKEN", token);
+    //let token = await(printAccessTokenAndIdToken());
+    //console.log("TOKEN", token);
      let data;
      //let url = import.meta.env.VITE_APP_API_ROOT + 'name?nameid=' + nameId;
      let url = import.meta.env.VITE_APP_API_ROOT + 'authtest';
@@ -36,9 +38,9 @@ const client = generateClient<Schema>();
 
      const response = await(fetch(url, { 
            method: 'GET', 
-           headers: new Headers({
-               'Authorization': token
-           })
+      //     headers: new Headers({
+        //       'Authorization': token
+          // })
        }));
      console.log("Status:", response.status);
      if(!response.ok) {
