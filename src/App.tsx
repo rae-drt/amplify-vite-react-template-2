@@ -20,7 +20,7 @@ import { generateClient } from "aws-amplify/data";
   };
 
 const client = generateClient<Schema>();
-const nameId = 100123;
+//const nameId = 100123;
   const fetchData = async() => {
      console.log("Fetching all the data");
     console.log(import.meta.env.VITE_VARIABLE);
