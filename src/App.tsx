@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
-// Temporary comment
 // Function to print access token and id token
   const printAccessTokenAndIdToken = async () => {
     try {
       const session = await fetchAuthSession();   // Fetch the authentication session
       console.log('Session:', session); //.tokens.accessToken.toString());
-      console.log('Tokens:', session.tokens); //.accessToken.toString());
-      console.log('accessToken:', session.tokens?.accessToken); //.toString());
+      //console.log('Tokens:', session.tokens); //.accessToken.toString());
+      //console.log('accessToken:', session.tokens?.accessToken); //.toString());
       console.log('token:', session.tokens?.accessToken?.toString()); //.toString());
       // console.log('ID Token:', session.tokens.idToken.toString());
-      return (session.tokens?.accessToken?.toString());
+      return (session.tokens?.idToken?.toString());
+      //return (session.tokens?.accessToken?.toString());
     }
     catch (e) { console.log(e); }
   };
@@ -22,21 +22,25 @@ import { generateClient } from "aws-amplify/data";
 const client = generateClient<Schema>();
 const nameId = 100123;
   const fetchData = async() => {
-     console.log("Fetching data");
+     console.log("Fetching all the data");
     console.log(import.meta.env.VITE_VARIABLE);
     //console.log(process.env);
      //setFetching(true);
     let token = await(printAccessTokenAndIdToken());
-    console.log("TOKEN", String(token));
+    console.log("TOKEN", token);
      let data;
-     let url = import.meta.env.VITE_APP_API_ROOT + 'name?nameid=' + nameId;
+     //let url = import.meta.env.VITE_APP_API_ROOT + 'name?nameid=' + nameId;
+     let url = import.meta.env.VITE_APP_API_ROOT + 'authtest';
      console.log(url);
+      // const response = await fetch(url);
+
      const response = await(fetch(url, { 
-    method: 'get', 
-    headers: new Headers({
-        'Authorization': String(token)
-    })
-}));
+           method: 'GET', 
+           headers: new Headers({
+               'Authorization': token
+           })
+       }));
+     console.log("Status:", response.status);
      if(!response.ok) {
        throw new Error('Bad response: ' + response.status);
       }
