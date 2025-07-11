@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
+// Temporary comment
 // Function to print access token and id token
   const printAccessTokenAndIdToken = async () => {
     try {
